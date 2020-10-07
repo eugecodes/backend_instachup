@@ -1,0 +1,34 @@
+<%- model_class = Image -%>
+<div class="page-header">
+  <h1>Imágenes</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th>Nombre</th>
+      <th>Artículo</th>
+      <th>Fecha de creación</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= link_to image.id, image_path(image) %></td>
+        <td><%= link_to image.name, image_path(image) %></td>
+        <td><%= image.article %></td>
+        <td><%=l image.created_at %></td>
+        <td>
+          <%= link_to 'Editar', edit_image_path(image), :class => 'btn btn-mini' %>
+          <%= link_to 'Eliminar', image_path(image),
+                      :method => :delete,
+                      :data => { :confirm => '¿Esta seguro que desea eliminar la imágen?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nueva',new_image_path, :class => 'btn btn-primary' %>

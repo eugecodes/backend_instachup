@@ -1,0 +1,18 @@
+<%- model_class = Category -%>
+<div class="page-header">
+  <h1>Categoría</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Nombre:</strong></dt>
+  <dd><%= @category.name %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to 'Atras', categories_path, :class => 'btn'  %>
+  <%= link_to 'Editar', edit_category_path(@category), :class => 'btn' %>
+  <%= link_to 'Eliminar', category_path(@category),
+              :method => 'delete',
+              :data => { :confirm =>'¿Esta seguro que desea eliminar la categoría?' },
+              :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,35 @@
+<%- model_class = Subcategory -%>
+<div class="page-header">
+  <h1>Subcategorías</h1>
+</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Fecha de creación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @subcategories.each do |subcategory| %>
+      <tr>
+        <td><%= link_to subcategory.id, subcategory_path(subcategory) %></td>
+        <td><%= link_to subcategory, subcategory_path(subcategory) %></td>
+        <td><%= subcategory.category %></td>
+        <td><%= subcategory.created_at.strftime('%d %b. %Y') %></td>
+        <td>
+          <%= link_to 'Editar', edit_subcategory_path(subcategory), :class => 'btn btn-mini' %>
+          <%= link_to 'Eliminar', subcategory_path(subcategory),
+                      :method => :delete,
+                      :data => { :confirm => '¿Esta seguro que desea eliminar la subcategoría?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+      <%= link_to 'Nueva', new_subcategory_path, :class => 'btn btn-primary' %>
+  

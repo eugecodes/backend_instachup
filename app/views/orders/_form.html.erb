@@ -1,0 +1,31 @@
+<%= form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label "Usuario", :class => 'control-label' %>
+    <div class="controls">
+     <%= f.collection_select(:user_id, User.all, :id, :email, {include_blank:"Seleccione un usuario"},{class:'text_field'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Dirección", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Longitud", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :longitude, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Latitud", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :latitude, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', orders_path, :class => 'btn' %>
+  </div>
+<% end %>

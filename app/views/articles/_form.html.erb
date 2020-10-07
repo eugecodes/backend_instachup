@@ -1,0 +1,43 @@
+<%= form_for @article, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :sku, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sku, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Descripción", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Precio", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Cantidad", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :amount, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Categoría", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank:"Seleccione una categoría"},{class:'text_field'}) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Subcategoría", :class => 'control-label' %>
+    <div class="controls">
+     <%= f.collection_select(:subcategory_id, Subcategory.all, :id, :name, {include_blank:"Seleccione una subcategoría"},{class:'text_field'}) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', articles_path, :class => 'btn' %>
+  </div>
+<% end %>

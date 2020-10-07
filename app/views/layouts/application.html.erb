@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instachupe</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar">
+  <div class="navbar-inner">
+    <p class="blanco-header" align="right">
+      <a><i class="icon-user"></i>
+        <%= current_user.email %></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to "Salir", destroy_user_session_path, :method => :delete, class:"icon-off sign_out" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+  </div>
+</div>
+
+<div class="main-container">
+
+  <a class="menu-toggler" id="menu-toggler" href="#">
+    <span class="menu-text"></span>
+  </a>
+  <div class="sidebar" id="sidebar"> 
+
+  <ul class="nav nav-list">
+  <li>
+    <a href="/articles">
+      <i class="icon-shopping-cart"></i>
+      <span class="menu-text"> Articulos </span>
+    </a>
+  </li>
+
+  <li>
+    <a href="/images">
+      <i class="icon-picture"></i>
+      <span class="menu-text">Imágenes </span>
+    </a>
+  </li>
+
+  <li>
+    <a href="/categories">
+      <i class="icon-bookmark"></i>
+      <span class="menu-text"> Categorías </span>
+    </a>
+  </li>
+
+
+  <li>
+    <a href="/subcategories">
+      <i class="icon-th-list"></i>
+      <span class="menu-text"> Subcategorías </span>
+    </a>
+  </li>
+
+  <li>
+    <a href="/orders">
+      <i class="icon-ok"></i>
+      <span class="menu-text"> Pedidos </span>
+    </a>
+  </li>
+
+  </ul>
+</div>
+<div class="main-content">
+  <div class="page-content">
+    <div class="row-fluid">
+    <p class="notice"><%= notice %></p>
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

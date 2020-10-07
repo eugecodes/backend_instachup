@@ -1,0 +1,24 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1>Pedido</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Usuario:</strong></dt>
+  <dd><%= @order.user %></dd>
+  <dt><strong>Dirección:</strong></dt>
+  <dd><%= @order.address %></dd>
+  <dt><strong>Longitud:</strong></dt>
+  <dd><%= @order.longitude %></dd>
+  <dt><strong>Latitud:</strong></dt>
+  <dd><%= @order.latitude %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to 'Atras', orders_path, :class => 'btn'  %>
+  <%= link_to 'Editar', edit_order_path(@order), :class => 'btn' %>
+  <%= link_to 'Eliminar', order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => '¿Esta seguro que desea eliminar el pedido?' },
+              :class => 'btn btn-danger' %>
+</div>

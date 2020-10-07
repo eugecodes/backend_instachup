@@ -1,0 +1,41 @@
+<%- model_class = Article -%>
+<div class="page-header">
+  <h1>Artículos</h1>
+</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th><%= model_class.human_attribute_name(:sku) %></th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Categoría</th>
+          <th>Subcategoría</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.id, article_path(article) %></td>
+        <td><%= link_to article.sku, article_path(article) %></td>
+        <td><%= article.description %></td>
+        <td><%= article.price %></td>
+        <td><%= article.amount %></td>
+        <td><%= article.category %></td>
+        <td><%= article.subcategory %></td>
+        <td>
+          <%= link_to 'Editar', edit_article_path(article), :class => 'btn btn-mini' %>
+          <%= link_to 'Eliminar', article_path(article),
+                      :method => :delete,
+                      :data => { :confirm => '¿Esta seguro que desea eliminar el artículo?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+        <%= link_to 'Nuevo', new_article_path, :class => 'btn btn-primary' %>
+  

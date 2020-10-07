@@ -1,0 +1,30 @@
+<%- model_class = Image -%>
+<div class="page-header">
+  <h1>Imágen</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Artículo</th>
+      <th>Imágen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%=label_tag @image.name, nil, :class => 'imagen_desc'%></td>
+      <td><%=label_tag @image.article, nil, :class => 'imagen_desc' %></td>
+      <td><%=image_tag @image.path, :class => 'imagen_upload' %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to 'Atras', images_path, :class => 'btn'  %>
+  <%= link_to 'Editar', edit_image_path(@image), :class => 'btn' %>
+  <%= link_to 'Eliminar', image_path(@image),
+              :method => 'delete',
+              :data => { :confirm => '¿Esta seguro que desea eliminar la imágen?' },
+              :class => 'btn btn-danger' %>
+</div>

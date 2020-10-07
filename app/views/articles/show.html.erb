@@ -1,0 +1,28 @@
+<%- model_class = Article -%>
+<div class="page-header">
+  <h1>Artículo</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:sku) %>:</strong></dt>
+  <dd><%= @article.sku %></dd>
+  <dt><strong>Descripción:</strong></dt>
+  <dd><%= @article.description %></dd>
+  <dt><strong>Precio:</strong></dt>
+  <dd><%= @article.price %></dd>
+  <dt><strong>Cantidad:</strong></dt>
+  <dd><%= @article.amount %></dd>
+  <dt><strong>Categoría:</strong></dt>
+  <dd><%= @article.category %></dd>
+  <dt><strong>Subcategoría:</strong></dt>
+  <dd><%= @article.subcategory %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to 'Atras', articles_path, :class => 'btn'  %>
+  <%= link_to 'Editar', edit_article_path(@article), :class => 'btn' %>
+  <%= link_to 'Eliminar', article_path(@article),
+              :method => 'delete',
+              :data => { :confirm => '¿Esta seguro que desea eliminar el artículo?' },
+              :class => 'btn btn-danger' %>
+</div>

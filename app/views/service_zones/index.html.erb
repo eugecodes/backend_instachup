@@ -1,0 +1,38 @@
+<%- model_class = ServiceZone -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:longitude) %></th>
+      <th><%= model_class.human_attribute_name(:latitude) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @service_zones.each do |service_zone| %>
+      <tr>
+        <td><%= link_to service_zone.id, service_zone_path(service_zone) %></td>
+        <td><%= service_zone.longitude %></td>
+        <td><%= service_zone.latitude %></td>
+        <td><%=l service_zone.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_service_zone_path(service_zone), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      service_zone_path(service_zone),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_service_zone_path,
+            :class => 'btn btn-primary' %>

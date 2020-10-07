@@ -1,0 +1,39 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1>Pedidos</h1>
+</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:id) %></th>
+          <th>Usuario</th>
+          <th>Dirección</th>
+          <th>Longitud</th>
+          <th>Latitud</th>
+          <th>Fecha de creación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, order_path(order) %></td>
+        <td><%= link_to order.user, order_path(order) %></td>
+        <td><%= order.address %></td>
+        <td><%= order.longitude %></td>
+        <td><%= order.latitude %></td>
+        <td><%= order.created_at.strftime('%d %b. %Y') %></td>
+        <td>
+          <%= link_to 'Editar', edit_order_path(order), :class => 'btn btn-mini' %>
+          <%= link_to 'Eliminar', order_path(order),
+                      :method => :delete,
+                      :data => { :confirm =>'¿Esta seguro que desea eliminar el pedido?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  <%= link_to 'Nuevo', new_order_path, :class => 'btn btn-primary' %>
+   
